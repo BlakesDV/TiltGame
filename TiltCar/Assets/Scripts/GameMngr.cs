@@ -5,22 +5,11 @@ using UnityEngine.SceneManagement;
 
 public class GameMngr : MonoBehaviour
 {
-
-    public static GameMngr Instance;
-    // Start is called before the first frame update
-    void Start()
+    private void OnCollisionEnter2D(Collision2D collision)
     {
-        
-    }
-
-    // Update is called once per frame
-    void Update()
-    {
-        
-    }
-    public void RestartGame()
-    {
-        //restart the scene by reloading the currently active scene
-        SceneManager.LoadScene(SceneManager.GetActiveScene().buildIndex, LoadSceneMode.Single);
+        if (collision.gameObject.CompareTag("Ground"))
+        {
+            GameManager.instance.GameOver();
+        }
     }
 }
